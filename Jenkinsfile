@@ -23,5 +23,11 @@ pipeline {
                 build job: 'static-analysis'
             }
         }
+
+        stage('LOG') {
+           steps {
+                logstashSend failBuild: true, maxLines: 10000
+           }
+        }
     }
 }
